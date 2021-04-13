@@ -17,6 +17,10 @@
   
   Delete: books, users, checkouts
   
+  
+## Database Diagram
+![Library Database Diagram](./Laravel Library.png)
+
 ## Routes/Actions
 
 
