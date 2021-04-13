@@ -19,7 +19,7 @@
   
   
 ## Database Diagram
-![Library Database Diagram](./Laravel Library.png)
+![Library Database Diagram](./Laravel Library .png)
 
 ## Routes/Actions
 
