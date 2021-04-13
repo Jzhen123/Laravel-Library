@@ -21,7 +21,12 @@
 ## Database Diagram
 ![Library Database Diagram](./Laravel Library .png)
 
+#### 
+
 ## Routes/Actions
+Create a book
+  /api/books/new?title={title}&isbn={isbn}&pages={pages}&cost={cost}&excerpt={excerpt}&genre={genre}&current_condition={condition}
+  
 
 
 
