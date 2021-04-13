@@ -28,11 +28,14 @@ class BookController extends Controller
       $book->save();   
     }
   
-    public function update($id){
-      $book = Book::find($id);
-      $book->cost = 24.0;
-      
-      $book->save();
+    public function update(Request $request, $id){
+      $inputs = $request->except('created_at', 'updated_at');
+      print_r($inputs);
+      foreach($inputs as $key => $value) {
+        $book = Book::find($id);
+        $book->$key = $value;
+        $book->save();
+      } 
     }
   
     public function delete($id){
