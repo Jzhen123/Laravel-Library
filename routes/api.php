@@ -36,16 +36,13 @@ Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'd
 
 
 Route::get('/checkouts/all', [App\Http\Controllers\CheckoutController::class, 'index']);
-
-Route::get('/checkouts/new', [App\Http\Controllers\CheckoutController::class, 'create']);
-
+Route::get('/checkouts/active_checkouts', [App\Http\Controllers\CheckoutController::class, 'active_checkouts']);
+Route::get('/checkouts/past_checkouts', [App\Http\Controllers\CheckoutController::class, 'past_checkouts']);
+Route::post('/checkouts/create', [App\Http\Controllers\CheckoutController::class, 'create']);
 Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::class, 'show']);
-
-Route::get('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']);
-
+Route::post('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']);
+Route::post('/checkouts/check_in/{id}', [App\Http\Controllers\CheckoutController::class, 'check_in']);
 Route::get('/checkouts/delete/{id}', [App\Http\Controllers\CheckoutController::class, 'delete']);
-
-
 
 
 
