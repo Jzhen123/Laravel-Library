@@ -22,7 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/users/all', [App\Http\Controllers\UserController::class, 'index']); // Get all users
 Route::post('/users/create', [App\Http\Controllers\UserController::class, 'create']); // Create new user from user input
 Route::get('/users/show/{id}', [App\Http\Controllers\UserController::class, 'show']); // Show a specfic user with their id
-
+Route::post('/users/update/{id}', [App\Http\Controllers\UserController::class, 'update']); // Update a specfic user with their id
+Route::get('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete']); // Delete a specfic user with their id
 
 
 // All the Book routes
