@@ -30,7 +30,6 @@ class BookController extends Controller
   
     public function update(Request $request, $id){
       $inputs = $request->except('created_at', 'updated_at');
-      print_r($inputs);
       foreach($inputs as $key => $value) {
         $book = Book::find($id);
         $book->$key = $value;

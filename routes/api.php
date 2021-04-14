@@ -34,6 +34,11 @@ Route::get('/checkouts/all', [App\Http\Controllers\CheckoutController::class, 'i
 
 Route::get('/checkouts/new', [App\Http\Controllers\CheckoutController::class, 'create']);
 
+Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::class, 'show']);
+
+Route::get('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']);
+
+
 
 
 

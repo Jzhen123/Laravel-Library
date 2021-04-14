@@ -16,8 +16,6 @@ class CheckoutController extends Controller
       return Checkout::find($id);   
     }
   
-  
-  
     public function create(Request $request){
       $checkout = new Checkout();
       $checkout->user_id = $request->input('user_id');
@@ -30,4 +28,18 @@ class CheckoutController extends Controller
       
       $checkout->save();   
     }
+  
+  
+    public function update(Request $request, $id){
+      $inputs = $request->except('created_at', 'updated_at');
+      foreach($inputs as $key => $value) {
+        $checkout = Checkout::find($id);
+        $checkout->$key = $value;
+        $checkout->save();
+      } 
+      $checkout->returned_date = Carbon::now();
+      $checkout->save();
+    }
+  
+  
 }
