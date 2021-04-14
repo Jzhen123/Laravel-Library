@@ -20,9 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/books/all', [App\Http\Controllers\BookController::class, 'index']); // Get all books
 
-// Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create']); // New book from factory
-
-// Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create']); // Change || New from user input
+Route::post('/books/create', [App\Http\Controllers\BookController::class, 'create']); // Create new book from user input
 
 Route::get('/books/show/{id}', [App\Http\Controllers\BookController::class, 'show']); // Show a specfic book with their id
 

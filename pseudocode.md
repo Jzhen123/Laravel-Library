@@ -34,7 +34,7 @@ Read a book
   /api/books/show/{id}
   
 Update a book
-  /api/books/{id}?title={title}&isbn={isbn}&pages={pages}&cost={cost}&excerpt={excerpt}&genre={genre}&current_condition={condition}
+  /api/books/{id}
 
 Delete a book
   /api/books/delete/{id}
