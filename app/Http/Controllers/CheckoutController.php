@@ -18,13 +18,16 @@ class CheckoutController extends Controller
       return Checkout::find($id);   
     }
   
+    // Show all active checkouts by referencing returned_date
     public function active_checkouts(){
       return Checkout::All()->where('returned_date', null);
     }
 
+    // Show all past checkouts by referencing returned_date
     public function past_checkouts(){
       return Checkout::All()->where('returned_date', '!=', null);
     }
+  
     // Creates new checkout using values given from postman
     public function create(Request $request){
       $checkout = new Checkout();
