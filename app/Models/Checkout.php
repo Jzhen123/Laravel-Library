@@ -12,11 +12,7 @@ class Checkout extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = true;
-  
-  
-  
-  protected $with = ['user', 'book'];
-  
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
