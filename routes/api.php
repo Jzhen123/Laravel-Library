@@ -30,3 +30,10 @@ Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'd
 
 
 
+Route::get('/checkouts/all', [App\Http\Controllers\CheckoutController::class, 'index']);
+
+Route::get('/checkouts/new', [App\Http\Controllers\CheckoutController::class, 'create']);
+
+
+
+

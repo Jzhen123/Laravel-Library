@@ -22,7 +22,7 @@ class CheckoutFactory extends Factory
     public function definition()
     {
         return [
-            //
+
         ];
     }
 }

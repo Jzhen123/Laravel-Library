@@ -37,6 +37,9 @@ Delete a book
   /api/books/delete/{id}
   
 
+Create a checkout
+  /api/checkouts/new?user_id={id}&book_id={id}&checked_out_condition={id}
+
 
 
 
