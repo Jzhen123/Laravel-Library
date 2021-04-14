@@ -24,13 +24,13 @@ class CheckoutFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::all()->random()->id,
-            'book_id' => Book::inRandomOrder()->limit(11)->get(),
-            'checked_out' => Carbon::now(),
-            'due_date' => Carbon::createFromTime(96),
-            'returned_date' => null,
-            'checked_out_condition' => $this->faker->numberBetween(0, 5),
-            'checked_in_condition' => null,
+//             'user_id' => User::all()->random()->id,
+//             'book_id' => Book::inRandomOrder()->limit(11)->get(),
+//             'checked_out' => Carbon::now(),
+//             'due_date' => Carbon::createFromTime(96),
+//             'returned_date' => null,
+//             'checked_out_condition' => $this->faker->numberBetween(0, 5),
+//             'checked_in_condition' => null,
         ];
     }
 }

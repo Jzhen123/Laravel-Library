@@ -24,7 +24,7 @@ Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create'])
 
 Route::get('/books/show/{id}', [App\Http\Controllers\BookController::class, 'show']);
 
-Route::get('/books/update/{id}', [App\Http\Controllers\BookController::class, 'update']);
+Route::post('/books/update/{id}', [App\Http\Controllers\BookController::class, 'update']);
 
 Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'delete']);
 

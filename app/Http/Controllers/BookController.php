@@ -29,12 +29,17 @@ class BookController extends Controller
     }
   
     public function update(Request $request, $id){
-      $inputs = $request->except('created_at', 'updated_at');
-      foreach($inputs as $key => $value) {
+//       $inputs = $request->except('created_at', 'updated_at');
+//       foreach($inputs as $key => $value) {
         $book = Book::find($id);
-        $book->$key = $value;
+        $book->title = $request->title;
+        $book->pages = $request->pages;
+           
         $book->save();
-      } 
+        return $book;
+//       } 
+      
+//       dd($request->pages);
     }
   
     public function delete($id){
