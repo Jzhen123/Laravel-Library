@@ -24,6 +24,9 @@
 #### 
 
 ## Routes/Actions
+Show all books
+  /api/books/all
+  
 Create a book
   /api/books/new?title={title}&isbn={isbn}&pages={pages}&cost={cost}&excerpt={excerpt}&genre={genre}&current_condition={condition}
   
@@ -31,11 +34,26 @@ Read a book
   /api/books/show/{id}
   
 Update a book
-  /api/books/{id}?title={title}&isbn={isbn}&pages={pages}&cost={cost}&excerpt={excerpt}&genre={genre}&current_condition={condition}
+  /api/books/{id}
 
 Delete a book
   /api/books/delete/{id}
   
+  
+Show all checkouts
+  /api/checkouts/all
+
+Create a checkout
+  /api/checkouts/new?user_id={id}&book_id={id}&checked_out_condition={id}
+  
+Read a checkout 
+  api/checkouts/show/{id}
+  
+Update a checkout
+  /api/checkouts/update/{id}?checked_in_condition={id}
+  
+Delete a checkout
+  /api/checkouts/delete/{id}
 
 
 
