@@ -22,9 +22,16 @@ class CreateCheckoutsTable extends Migration
             $table->dateTime('returned_date')->nullable();
             $table->integer('checked_out_condition');
             $table->integer('checked_in_condition')->nullable();
-            
             $table->timestamps();
-
+          
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('book_id')
+                ->references('id')
+                ->on('books')
+                ->onDelete('cascade');
         });
     }
 
