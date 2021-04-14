@@ -33,19 +33,15 @@ Route::get('/books/show/{id}', [App\Http\Controllers\BookController::class, 'sho
 Route::post('/books/update/{id}', [App\Http\Controllers\BookController::class, 'update']); // Update a specfic book with their id
 Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'delete']); // Delete a specfic book with their id
 
-
-
-Route::get('/checkouts/all', [App\Http\Controllers\CheckoutController::class, 'index']);
-
-Route::get('/checkouts/new', [App\Http\Controllers\CheckoutController::class, 'create']);
-
-Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::class, 'show']);
-
-Route::get('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']);
-
-Route::get('/checkouts/delete/{id}', [App\Http\Controllers\CheckoutController::class, 'delete']);
-
-
+// All the Checkout routes
+Route::get('/checkouts/all', [App\Http\Controllers\CheckoutController::class, 'index']); // Get all checkouts
+Route::get('/checkouts/active_checkouts', [App\Http\Controllers\CheckoutController::class, 'active_checkouts']); // Get all active checkouts
+Route::get('/checkouts/past_checkouts', [App\Http\Controllers\CheckoutController::class, 'past_checkouts']); // Get all past checkouts
+Route::post('/checkouts/create', [App\Http\Controllers\CheckoutController::class, 'create']); // Create a checkout
+Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::class, 'show']); // Show a checkout using id
+Route::post('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']); // Update a checkout using id
+Route::post('/checkouts/check_in/{id}', [App\Http\Controllers\CheckoutController::class, 'check_in']); // Checkin a checkout using id
+Route::get('/checkouts/delete/{id}', [App\Http\Controllers\CheckoutController::class, 'delete']); // Delete a checkout using id
 
 
 

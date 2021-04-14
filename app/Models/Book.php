@@ -13,4 +13,10 @@ class Book extends Model
   public $incrementing = true;
   public $timestamps = true;
   
+  protected $with = ['checkouts'];
+  
+  public function checkouts()
+    {
+        return $this->hasMany(Checkout::class);
+    }
 }
