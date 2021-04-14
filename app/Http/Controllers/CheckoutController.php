@@ -41,5 +41,7 @@ class CheckoutController extends Controller
       $checkout->save();
     }
   
-  
+    public function delete($id){
+      Checkout::find($id)->delete();
+    }
 }

@@ -51,6 +51,9 @@ Read a checkout
   
 Update a checkout
   /api/checkouts/update/{id}?checked_in_condition={id}
+  
+Delete a checkout
+  /api/checkouts/delete/{id}
 
 
 

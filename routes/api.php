@@ -38,6 +38,8 @@ Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::cla
 
 Route::get('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']);
 
+Route::get('/checkouts/delete/{id}', [App\Http\Controllers\CheckoutController::class, 'delete']);
+
 
 
 
