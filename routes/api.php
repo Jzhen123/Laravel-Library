@@ -18,15 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/books/all', [App\Http\Controllers\BookController::class, 'index']);
+Route::get('/books/all', [App\Http\Controllers\BookController::class, 'index']); // Get all books
 
-Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create']);
+// Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create']); // New book from factory
 
-Route::get('/books/show/{id}', [App\Http\Controllers\BookController::class, 'show']);
+// Route::get('/books/new', [App\Http\Controllers\BookController::class, 'create']); // Change || New from user input
 
-Route::post('/books/update/{id}', [App\Http\Controllers\BookController::class, 'update']);
+Route::get('/books/show/{id}', [App\Http\Controllers\BookController::class, 'show']); // Show a specfic book with their id
 
-Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'delete']);
+Route::post('/books/update/{id}', [App\Http\Controllers\BookController::class, 'update']); // Update a specfic book with their id
+
+Route::get('/books/delete/{id}', [App\Http\Controllers\BookController::class, 'delete']); // Delete a specfic book with their id
 
 
 

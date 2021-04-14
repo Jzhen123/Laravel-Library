@@ -29,17 +29,28 @@ class BookController extends Controller
     }
   
     public function update(Request $request, $id){
-//       $inputs = $request->except('created_at', 'updated_at');
-//       foreach($inputs as $key => $value) {
-        $book = Book::find($id);
-        $book->title = $request->title;
-        $book->pages = $request->pages;
-           
+      
+      $book = Book::find($id);
+      
+      // Changes value of the key if there was an user input for the respective value and then reformats type to meet table structure
+      if ($request->title != null) {$book->title = $request->title;}
+      if ($request->ISBN != null) {$book->ISBN = $request->ISBN;}
+      if ($request->pages != null) {$book->pages = $request->pages;}
+      if ($request->cost != null) {$book->cost = $request->cost;}
+      if ($request->excerpt != null) {$book->excerpt = $request->excerpt;}
+      if ($request->genre != null) {$book->genre = $request->genre;}
+      if ($request->current_condition != null) {$book->current_condition = $request->current_condition;}
+      
+//         $book->title = $request->title;
+//         $book->ISBN = $request->ISBN;
+//         $book->pages = $request->pages;
+//         $book->cost = $request->cost;
+//         $book->excerpt = $request->excerpt;
+//         $book->genre = $request->genre;
+//         $book->current_condition = $request->current_condition;
+        
         $book->save();
         return $book;
-//       } 
-      
-//       dd($request->pages);
     }
   
     public function delete($id){
