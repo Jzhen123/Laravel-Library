@@ -30,7 +30,7 @@ class CheckoutController extends Controller
   
     // Creates new checkout using values given from postman
     public function create(Request $request){
-      if ($)
+      
       $checkout = new Checkout();
         if ($request->user_id != null) {$checkout->user_id = $request->user_id;}
         if ($request->book_id != null) {$checkout->book_id = $request->book_id;}

@@ -23,9 +23,14 @@ class Checkout extends Model
         return $this->belongsTo(Book::class, 'book_id', 'id');
     }
   
-//     public function condition()
-//     {
-//         return $this->belongsTo(Condition::class);
-//     }
+    public function checked_out_condition()
+    {
+        return $this->belongsTo(Condition::class, 'checked_out_condition', 'id');
+    }
+  
+   public function checked_in_condition()
+    {
+        return $this->belongsTo(Condition::class, 'checked_in_condition', 'id');
+    }
 
 }

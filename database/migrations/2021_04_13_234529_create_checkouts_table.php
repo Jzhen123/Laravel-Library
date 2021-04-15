@@ -20,8 +20,8 @@ class CreateCheckoutsTable extends Migration
             $table->dateTime('checked_out');
             $table->dateTime('due_date');
             $table->dateTime('returned_date')->nullable();
-            $table->integer('checked_out_condition');
-            $table->integer('checked_in_condition')->nullable();
+            $table->foreignId('checked_out_condition');
+            $table->foreignId('checked_in_condition')->nullable();
             $table->timestamps();
           
         });
