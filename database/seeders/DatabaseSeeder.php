@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $conditions = ['Destroyed', 'Messed Up', 'Okay', 'Good', 'New'];
         foreach ($conditions as $condition) {\DB::insert('insert into conditions (label) values(?)',[$condition]);}
       
-        \App\Models\User::factory(10)->create();
-        \App\Models\Book::factory(10)->create();
+        \App\Models\User::factory(5)->create(); // Creates 10 Fake Users from its factory
+        \App\Models\Book::factory(5)->create(); // Creates 10 Fake Books from its factroy
 
     }
 }

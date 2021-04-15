@@ -40,7 +40,7 @@ Route::get('/checkouts/past_checkouts', [App\Http\Controllers\CheckoutController
 Route::post('/checkouts/create', [App\Http\Controllers\CheckoutController::class, 'create']); // Create a checkout
 Route::get('/checkouts/show/{id}', [App\Http\Controllers\CheckoutController::class, 'show']); // Show a checkout using id
 Route::post('/checkouts/update/{id}', [App\Http\Controllers\CheckoutController::class, 'update']); // Update a checkout using id
-Route::post('/checkouts/check_in/{id}', [App\Http\Controllers\CheckoutController::class, 'check_in']); // Checkin a checkout using id
+Route::post('/checkouts/check_in/{id}', [App\Http\Controllers\CheckoutController::class, 'check_in']); // Checkin a checkout using a book id
 Route::get('/checkouts/delete/{id}', [App\Http\Controllers\CheckoutController::class, 'delete']); // Delete a checkout using id
 
 

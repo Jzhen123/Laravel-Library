@@ -47,7 +47,7 @@ class CheckoutController extends Controller
       if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {$checkout->checked_in_condition = null;}  
       $checkout->save();
       
-      $book = Book::find($id); // Changes availability of the book we just checked in
+      $book = Book::find($id); // Changes availability of the book we just checked out
       $book->available = 0;
       $book->save();
       
@@ -72,12 +72,12 @@ class CheckoutController extends Controller
     // Returns a book by using its id
     public function check_in(Request $request, $id){
       $book = Book::find($id);
-      $checkout = Checkout::where('book_id', $book->id)->get()->last();
+      $checkout = Checkout::where('book_id', $book->id)->get()->last(); // Gets the last checkout of a certain book, so we change the checkout that has not been returned yet and not past checkouts
         if ($request->returned_date != null) {$checkout->returned_date = $request->returned_date;} else {$checkout->returned_date = Carbon::now();}  
         if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {}
       
       $checkout->save();
-      $book->available = 1;
+      $book->available = 1; // Changes availability of the book we just checked in
       $book->save();
       return $checkout;
     }
