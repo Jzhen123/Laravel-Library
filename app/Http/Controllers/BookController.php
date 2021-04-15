@@ -26,7 +26,7 @@ class BookController extends Controller
       if ($request->cost != null) {$book->cost = $request->cost;}
       if ($request->excerpt != null) {$book->excerpt = $request->excerpt;} else {$book->excerpt = "Nothing Given";} // Default since excerpt isn't really mandatory
       if ($request->genre != null) {$book->genre = $request->genre;}
-      if ($request->current_condition != null) {$book->current_condition = $request->current_condition;}
+      if ($request->available != null) {$book->available = $request->available;} else {$book->available = 1;}
       
       $book->save();
       return $book;
@@ -42,7 +42,7 @@ class BookController extends Controller
       if ($request->cost != null) {$book->cost = $request->cost;}
       if ($request->excerpt != null) {$book->excerpt = $request->excerpt;}
       if ($request->genre != null) {$book->genre = $request->genre;}
-      if ($request->current_condition != null) {$book->current_condition = $request->current_condition;}
+      if ($request->available != null) {$book->available = $request->available;}
       
       $book->save();
       return $book;

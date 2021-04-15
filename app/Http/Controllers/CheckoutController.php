@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 use App\Models\Checkout;
 use Carbon\Carbon;
 
@@ -31,21 +32,25 @@ class CheckoutController extends Controller
     // Creates new checkout using values given from postman
     public function create(Request $request){
         $id = $request->book_id;
-        $books = Checkout::all();
-        foreach($books as $book) {
-          if ($book->book_id == $id && $book->returned_date == null) return "Book is already checked out!"; // Makes sure the book is returned before it can be checked out again
+        $checkouts = Checkout::all();
+        foreach($checkouts as $checkout_book_id) {
+          if ($checkout_book_id->book_id == $id && $checkout_book_id->returned_date == null) return "Book is already checked out!"; // Makes sure the book is returned before it can be checked out again
         }
-      
+        
       $checkout = new Checkout();
-        if ($request->user_id != null) {$checkout->user_id = $request->user_id;}
-        if ($request->book_id != null) {$checkout->book_id = $request->book_id;}
-        if ($request->checked_out != null) {$checkout->checked_out = $request->checked_out;} else {$checkout->checked_out = Carbon::now();}
-        if ($request->due_date != null) {$checkout->due_date = $request->due_date;} else {$checkout->due_date = Carbon::createFromTime(96);}  
-        if ($request->returned_date != null) {$checkout->returned_date = $request->returned_date;} else {$checkout->returned_date = null;}  
-        if ($request->checked_out_condition != null) {$checkout->checked_out_condition = $request->checked_out_condition;}
-        if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {$checkout->checked_in_condition = null;}  
-      
+      if ($request->user_id != null) {$checkout->user_id = $request->user_id;}
+      if ($request->book_id != null) {$checkout->book_id = $request->book_id;}
+      if ($request->checked_out != null) {$checkout->checked_out = $request->checked_out;} else {$checkout->checked_out = Carbon::now();}
+      if ($request->due_date != null) {$checkout->due_date = $request->due_date;} else {$checkout->due_date = Carbon::createFromTime(96);}  
+      if ($request->returned_date != null) {$checkout->returned_date = $request->returned_date;} else {$checkout->returned_date = null;}  
+      if ($request->checked_out_condition != null) {$checkout->checked_out_condition = $request->checked_out_condition;}
+      if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {$checkout->checked_in_condition = null;}  
       $checkout->save();
+      
+      $book = Book::find($id); // Changes availability of the book we just checked out
+      $book->available = 0;
+      $book->save();
+      
       return $checkout;
     }
 
@@ -66,11 +71,14 @@ class CheckoutController extends Controller
   
     // Returns a book by using its id
     public function check_in(Request $request, $id){
-      $checkout = Checkout::find($id);
+      $book = Book::find($id);
+      $checkout = Checkout::where('book_id', $book->id)->get()->last(); // Gets the last checkout of a certain book, so we change the checkout that has not been returned yet and not past checkouts
         if ($request->returned_date != null) {$checkout->returned_date = $request->returned_date;} else {$checkout->returned_date = Carbon::now();}  
         if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {}
       
       $checkout->save();
+      $book->available = 1; // Changes availability of the book we just checked in
+      $book->save();
       return $checkout;
     }
   

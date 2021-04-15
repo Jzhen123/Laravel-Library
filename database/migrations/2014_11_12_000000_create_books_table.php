@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->double('cost');
             $table->text('excerpt');
             $table->integer('genre');
-            $table->integer('current_condition');
+            $table->integer('available');
             $table->timestamps();
         });
     }
