@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Condition extends Model
 {
     use HasFactory;
+    protected $table = 'conditions';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    public $timestamps = true;
   
-//     public function books()
-//     {
-//         return $this->hasMany(Book::class);
-//     }
+    protected $with = ['checkouts'];
+
+    public function checkouts()
+    {
+        return $this->hasMany(Checkout::class, 'id');
+    }
 }
