@@ -30,6 +30,11 @@ class CheckoutController extends Controller
   
     // Creates new checkout using values given from postman
     public function create(Request $request){
+        $id = $request->book_id;
+        $books = Checkout::all();
+        foreach($books as $book) {
+          if ($book->book_id == $id && $book->returned_date == null) return "Book is already checked out!"; // Makes sure the book is returned before it can be checked out again
+        }
       
       $checkout = new Checkout();
         if ($request->user_id != null) {$checkout->user_id = $request->user_id;}
@@ -63,7 +68,7 @@ class CheckoutController extends Controller
     public function check_in(Request $request, $id){
       $checkout = Checkout::find($id);
         if ($request->returned_date != null) {$checkout->returned_date = $request->returned_date;} else {$checkout->returned_date = Carbon::now();}  
-        if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;}
+        if ($request->checked_in_condition != null) {$checkout->checked_in_condition = $request->checked_in_condition;} else {}
       
       $checkout->save();
       return $checkout;
