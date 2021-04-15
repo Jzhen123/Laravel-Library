@@ -18,7 +18,7 @@ class User extends Authenticatable
         'active',
     ];
 
-//   protected $with = ['checkouts'];
+  protected $with = ['checkouts'];
   
   public function checkouts()
     {
